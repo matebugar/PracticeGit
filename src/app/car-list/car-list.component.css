@@ -1,0 +1,23 @@
+#card {
+width: 300px;
+margin-top: 20px;
+margin-right: 40px;
+
+}
+
+.card-desc {
+	margin-left: 50px;
+}
+
+#imgCar {
+	height: 150px;
+	width: 300px;
+}
+
+#card ul {
+	list-style-type: none;
+}
+
+.formForSearch {
+	margin-top: 26px;
+}

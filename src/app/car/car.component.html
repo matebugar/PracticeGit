@@ -1,0 +1,76 @@
+<div class="row">
+        <div class="col-md-5">
+                <!-- We will build this form using ReactiveForm based on the property "form" inside carservice.ts  -->
+                <form [formGroup]="this.carService.form" (ngSubmit)="onSubmit()">
+                        <input type="hidden" formControlName="$key"><!-- this is a primary key for each record of car and after that we can display the active form control-->
+                        <div class="form-group">
+                                <label>Brand</label>
+                                <input formControlName="brand" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.brand.errors}"><!-- the value of the formControlName must match the name that we provided inside FormGroup in carService class -->
+                        <div class="invalid-feedback" *ngIf="submitted && formControls.brand.errors">This field is required</div>
+                        </div>
+                        <div class="form-group">
+                                <label>Type</label>
+                                <input formControlName="type" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.type.errors}">
+                                <div class="invalid-feedback" *ngIf="submitted && formControls.type.errors">This field is required</div>
+                        </div>
+                        <div class="form-group">
+                                <label>Seats</label>
+                                <input formControlName="seats" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.seats.errors}">
+                                <div class="invalid-feedback" *ngIf="submitted && formControls.seats.errors">
+                                        <label *ngIf="formControls.seats.errors.required">This field is required</label>
+                                        <label *ngIf="formControls.seats.errors.minlength">at least 1 number</label>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label>Horsepower</label>
+                                <input formControlName="horsepower" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.horsepower.errors}">
+                                <div class="invalid-feedback" *ngIf="submitted && formControls.horsepower.errors">
+                                        <label *ngIf="formControls.horsepower.errors.required">This field is required</label>
+                                        <label *ngIf="formControls.horsepower.errors.minlength">at least 3 numbers</label>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label>Sportscar</label>
+                                <input formControlName="sportscar" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.sportscar.errors}">
+                                <div class="invalid-feedback" *ngIf="submitted && formControls.sportscar.errors">This field is required</div>
+                        </div>
+                        <div class="form-group">
+                                <label>Colour</label>
+                                <input formControlName="colour" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.colour.errors}">
+                                <div class="invalid-feedback" *ngIf="submitted && formControls.colour.errors">This field is required</div>
+                        </div>
+                        <div class="form-group">
+                                <label>Age</label>
+                                <input formControlName="age" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.age.errors}">
+                                <div class="invalid-feedback" *ngIf="submitted && formControls.age.errors">
+                                        <label *ngIf="formControls.age.errors.required">This field is required</label>
+                                        <label *ngIf="formControls.age.errors.minlength">at least 4 numbers</label>
+                                </div>
+
+                        </div>
+                        <div class="form-group">
+                                <label>Price</label>
+                                <input formControlName="price" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.price.errors}">
+                                <div class="invalid-feedback" *ngIf="submitted && formControls.price.errors">
+                                        <label *ngIf="formControls.price.errors.required">This field is required</label>
+                                        <label *ngIf="formControls.price.errors.minlength">at least 5 numbers</label>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                                <label>Image</label>
+                                <input formControlName="carImage" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.carImage.errors}">
+                                <div class="invalid-feedback" *ngIf="submitted && formControls.carImage.errors">This field is required</div>
+                        </div>
+                        <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Submit"><!-- the value of the formControlName must match the name that we provided inside FormGroup in carService class -->
+
+                        </div>
+                </form>
+                <div class="alert alert-info" *ngIf="showSuccessMessage">
+        submitted successfully.
+</div>
+        </div>
+        <div class="col-md-7">
+                <app-car-list></app-car-list>
+        </div>
+</div>

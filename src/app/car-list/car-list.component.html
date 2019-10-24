@@ -1,0 +1,28 @@
+<form class="form-inline formForSearch">
+        <input name="searchInput" class="form-control" placeholder="Search" #searchInput="ngModel" [(ngModel)]="searchText" style="width: 94%;">
+        <button class="btn btn-outline-primary" (click)="searchText=''">x</button>
+</form>
+<div class="row">
+<ng-container *ngFor="let car of carArray">
+<div id="card" class="card col-lg-2" style="" *ngIf="filterCondition(car)">
+  <img src="{{car.carImage}}"  id="imgCar" class="card-img-top" alt="..." >
+  <div class="card-body text-center card-desc">
+    <h3 class="card-title">{{car.brand}} {{car.type}}</h3>
+  </div>
+  <ul class="list-group list-group-flush text-center card-desc">
+  	<li class="list-group">Seats: {{car.seats}}</li>
+    <li class="list-group">Horsepower: {{car.horsepower}}</li>
+    <li class="list-group">Sportscar: {{car.sportscar}}</li>
+    <li class="list-group">Colour: {{car.colour}}</li>
+    <li class="list-group">Age: {{car.age}}</li>
+    <li class="list-group">Price: {{car.price}}</li>
+  </ul>
+  <div class="card-body text-center card-desc">
+    <button class="btn btn-info" (click)="carService.populateForm(car)">Edit</button>
+	<button class="btn btn-danger" (click)="onDelete(car.$key)">Delete</button>
+  </div>
+  </div>	
+
+</ng-container>
+
+<div class="alert alert-danger" *ngIf="showDeletedMessage">Deleted successfully</div>
